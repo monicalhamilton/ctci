@@ -1,5 +1,10 @@
 package linkedlists;
 
+/**
+ * 2.2
+ *
+ * Implement an algorithm to find the kth to last element of a singly linked list.
+ */
 class KthToLastInLinkedList {
     static SinglyLinkedNode findKthToLastInLinkedList(SinglyLinkedNode head, int k) {
         if (head == null) {
