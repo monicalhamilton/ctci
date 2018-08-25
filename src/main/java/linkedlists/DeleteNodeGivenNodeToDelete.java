@@ -10,14 +10,14 @@ package linkedlists;
  */
 public class DeleteNodeGivenNodeToDelete {
 
-    public static void deleteNodeGivenNodeToDelete(SinglyLinkedNode n) {
+    public static void deleteNodeGivenNodeToDelete(Node n) {
         if (n == null) {
             return;
         }
         if (n.next == null) {
             throw new RuntimeException("Cannot delete the last element");
         }
-        SinglyLinkedNode current = n;
+        Node current = n;
         while (current.next != null) {
             current.data = current.next.data;
             if (current.next.next == null) {

@@ -14,7 +14,7 @@ public class DeleteNodeGivenNodeToDeleteTest {
 
     @Test
     public void testFirstNode() {
-        SinglyLinkedNode<Integer> head = new SinglyLinkedNode<>(1);
+        Node<Integer> head = new Node<>(1);
         head.add(2);
         head.add(3);
 
@@ -27,8 +27,8 @@ public class DeleteNodeGivenNodeToDeleteTest {
 
     @Test
     public void testMiddleNode() {
-        SinglyLinkedNode<Integer> head = new SinglyLinkedNode<>(1);
-        SinglyLinkedNode<Integer> middle = head.add(2);
+        Node<Integer> head = new Node<>(1);
+        Node<Integer> middle = head.add(2);
         middle.add(3);
 
         DeleteNodeGivenNodeToDelete.deleteNodeGivenNodeToDelete(middle);
@@ -40,9 +40,9 @@ public class DeleteNodeGivenNodeToDeleteTest {
 
     @Test(expected = RuntimeException.class)
     public void testLastNode() {
-        SinglyLinkedNode<Integer> head = new SinglyLinkedNode<>(1);
+        Node<Integer> head = new Node<>(1);
         head.add(2);
-        SinglyLinkedNode<Integer> tail = head.add(3);
+        Node<Integer> tail = head.add(3);
 
         DeleteNodeGivenNodeToDelete.deleteNodeGivenNodeToDelete(tail);
     }

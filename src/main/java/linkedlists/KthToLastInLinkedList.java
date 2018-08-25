@@ -6,14 +6,14 @@ package linkedlists;
  * Implement an algorithm to find the kth to last element of a singly linked list.
  */
 class KthToLastInLinkedList {
-    static SinglyLinkedNode findKthToLastInLinkedList(SinglyLinkedNode head, int k) {
+    static Node findKthToLastInLinkedList(Node head, int k) {
         if (head == null) {
             return null;
         }
 
         // Move pointers k apart
-        SinglyLinkedNode kthToLastFinder = head;
-        SinglyLinkedNode endFinder = head;
+        Node kthToLastFinder = head;
+        Node endFinder = head;
         int i = 0;
         while (i < k && endFinder.next != null) {
             endFinder = endFinder.next;

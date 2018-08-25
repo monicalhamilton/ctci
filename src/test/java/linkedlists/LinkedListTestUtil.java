@@ -1,11 +1,11 @@
 package linkedlists;
 
 public class LinkedListTestUtil {
-    static <T> SinglyLinkedNode makeList(T... values) {
-        SinglyLinkedNode head = null;
-        SinglyLinkedNode prev = null;
+    static <T> Node makeList(T... values) {
+        Node head = null;
+        Node prev = null;
         for (T v : values) {
-            SinglyLinkedNode n = new SinglyLinkedNode<T>(v);
+            Node n = new Node<T>(v);
             if (head == null) {
                 head = n;
             } else {
