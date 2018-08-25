@@ -1,3 +1,5 @@
+package arraysandstrings;
+
 /**
  * A sorted array has been rotated so that the elements might appear in the order 3 4 5 6 7 1 2.
  * How would you find the minimum element? You may assume that the array has all unique elements.

@@ -1,4 +1,8 @@
+package arraysandstrings;
+
 import org.junit.Test;
+
+import arraysandstrings.FindMinInRotatedArray;
 
 import static org.junit.Assert.assertEquals;
 
