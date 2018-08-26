@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class AddNumbersAsListsTest {
+public class AddNumbersAsListsTest_Reverse {
 
     @Test
     public void testSingleDigitNoCarryover() {
