@@ -1,9 +1,9 @@
-package stacks;
+package monicalhamilton.ctci.stacks;
 
 /**
  * 3.1
  *
- * Describe how you could use a single array to implement three stacks.
+ * Describe how you could use a single array to implement three monicalhamilton.ctci.stacks.
  */
 public class ArrayBackedStacks {
 
@@ -28,7 +28,7 @@ public class ArrayBackedStacks {
 
     public void push(int data, int stackId) {
         if (stackId > numStacks) {
-            throw new RuntimeException("Stack id " + stackId + " is greater than max number of stacks");
+            throw new RuntimeException("Stack id " + stackId + " is greater than max number of monicalhamilton.ctci.stacks");
         }
         int top = tops[stackId];
         int newTop = top == EMPTY_STACK ? stackId : top + numStacks;

@@ -1,4 +1,4 @@
-package arraysandstrings;
+package monicalhamilton.ctci.arraysandstrings;
 
 /**
  * VI. Technical Questions| Five Algorithm Approaches

@@ -1,4 +1,4 @@
-package linkedlists;
+package monicalhamilton.ctci.linkedlists;
 
 import org.junit.Test;
 

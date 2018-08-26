@@ -1,6 +1,4 @@
-package linkedlists;
-
-import java.util.stream.IntStream;
+package monicalhamilton.ctci.linkedlists;
 
 /**
  * 2.5

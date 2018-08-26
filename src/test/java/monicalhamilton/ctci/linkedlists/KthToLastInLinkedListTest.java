@@ -1,8 +1,8 @@
-package linkedlists;
+package monicalhamilton.ctci.linkedlists;
 
 import org.junit.Test;
 
-import static linkedlists.LinkedListTestUtil.makeList;
+import static monicalhamilton.ctci.linkedlists.LinkedListTestUtil.makeList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 

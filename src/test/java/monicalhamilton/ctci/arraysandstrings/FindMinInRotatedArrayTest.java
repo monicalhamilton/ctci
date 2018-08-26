@@ -1,8 +1,6 @@
-package arraysandstrings;
+package monicalhamilton.ctci.arraysandstrings;
 
 import org.junit.Test;
-
-import arraysandstrings.FindMinInRotatedArray;
 
 import static org.junit.Assert.assertEquals;
 

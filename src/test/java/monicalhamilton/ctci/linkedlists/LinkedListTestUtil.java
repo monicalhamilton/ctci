@@ -1,4 +1,6 @@
-package linkedlists;
+package monicalhamilton.ctci.linkedlists;
+
+import monicalhamilton.ctci.linkedlists.Node;
 
 public class LinkedListTestUtil {
     static <T> Node<T> makeList(T... values) {

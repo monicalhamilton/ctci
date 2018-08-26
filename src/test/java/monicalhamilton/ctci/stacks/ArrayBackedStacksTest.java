@@ -1,4 +1,4 @@
-package stacks;
+package monicalhamilton.ctci.stacks;
 
 import org.junit.Test;
 

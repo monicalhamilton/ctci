@@ -1,6 +1,9 @@
-package linkedlists;
+package monicalhamilton.ctci.linkedlists;
 
 import org.junit.Test;
+
+import monicalhamilton.ctci.linkedlists.DeleteNodeGivenNodeToDelete;
+import monicalhamilton.ctci.linkedlists.Node;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
