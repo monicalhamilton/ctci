@@ -2,6 +2,7 @@ package monicalhamilton.ctci.treesandgraphs;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class BinaryTree {
     private final Node root;
@@ -14,8 +15,22 @@ public class BinaryTree {
         return root.isBalanced();
     }
 
-    public String prettyPrint() {
-        return root.prettyPrint();
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BinaryTree that = (BinaryTree) o;
+        return Objects.equals(root, that.root);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(root);
+    }
+
+    @Override
+    public String toString() {
+        return  root.prettyPrint();
     }
 
     public static class Node {
@@ -87,6 +102,21 @@ public class BinaryTree {
             }
             newPrint.addToTop(Print.pad(String.valueOf(data), totalWidth));
             return newPrint;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Node node = (Node) o;
+            return data == node.data &&
+                Objects.equals(left, node.left) &&
+                Objects.equals(right, node.right);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(data, left, right);
         }
 
         @Override
