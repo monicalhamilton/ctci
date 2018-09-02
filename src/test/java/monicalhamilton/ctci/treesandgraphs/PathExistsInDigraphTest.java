@@ -2,7 +2,8 @@ package monicalhamilton.ctci.treesandgraphs;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class PathExistsInDigraphTest {
 
@@ -12,8 +13,8 @@ public class PathExistsInDigraphTest {
     @Test
     public void singletonGraph_originEqualsDestination_returnsTrue() {
         Graph.Vertex<Character> a = new Graph.Vertex<>('a');
-        assertTrue(PathExistsInDigraph.pathExistsDFS(a, a));
-        assertFalse(PathExistsInDigraph.pathExistsDFS(a, new Graph.Vertex<>('b')));
+        thenPathExists(a, a);
+        thenPathDoesNotExist(a, new Graph.Vertex<>('b'));
     }
 
     /**
@@ -27,7 +28,7 @@ public class PathExistsInDigraphTest {
     public void selfReferentialGraph_originEqualsDestination_returnsTrue() {
         Graph.Vertex<Character> origin = new Graph.Vertex<>('a');
         origin.addNeighbor(origin);
-        assertTrue(PathExistsInDigraph.pathExistsDFS(origin, origin));
+        thenPathExists(origin, origin);
     }
 
     /**
@@ -38,7 +39,7 @@ public class PathExistsInDigraphTest {
         Graph.Vertex<Character> origin = new Graph.Vertex<>('a');
         Graph.Vertex<Character> destination = new Graph.Vertex<>('b');
         origin.addNeighbor(destination);
-        assertTrue(PathExistsInDigraph.pathExistsDFS(origin, destination));
+        thenPathExists(origin, destination);
     }
 
     /**
@@ -49,7 +50,7 @@ public class PathExistsInDigraphTest {
         Graph.Vertex<Character> origin = new Graph.Vertex<>('a');
         Graph.Vertex<Character> destination = new Graph.Vertex<>('b');
         destination.addNeighbor(origin);
-        assertFalse(PathExistsInDigraph.pathExistsDFS(origin, destination));
+        thenPathDoesNotExist(origin, destination);
     }
 
     /**
@@ -62,7 +63,7 @@ public class PathExistsInDigraphTest {
         Graph.Vertex<Character> destination = new Graph.Vertex<>('c');
         origin.addNeighbor(intermediate);
         intermediate.addNeighbor(destination);
-        assertTrue(PathExistsInDigraph.pathExistsDFS(origin, destination));
+        thenPathExists(origin, destination);
     }
 
     /**
@@ -82,35 +83,35 @@ public class PathExistsInDigraphTest {
         a.addNeighbor(d);
         d.addNeighbor(e);
 
-        assertTrue(PathExistsInDigraph.pathExistsDFS(a, a));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(a, b));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(a, c));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(a, d));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(a, e));
+        thenPathExists(a, a);
+        thenPathExists(a, b);
+        thenPathExists(a, c);
+        thenPathExists(a, d);
+        thenPathExists(a, e);
 
-        assertFalse(PathExistsInDigraph.pathExistsDFS(b, a));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(b, b));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(b, c));
-        assertFalse(PathExistsInDigraph.pathExistsDFS(b, d));
-        assertFalse(PathExistsInDigraph.pathExistsDFS(c, e));
+        thenPathDoesNotExist(b, a);
+        thenPathExists(b, b);
+        thenPathExists(b, c);
+        thenPathDoesNotExist(b, d);
+        thenPathDoesNotExist(c, e);
 
-        assertFalse(PathExistsInDigraph.pathExistsDFS(c, a));
-        assertFalse(PathExistsInDigraph.pathExistsDFS(c, b));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(c, c));
-        assertFalse(PathExistsInDigraph.pathExistsDFS(c, d));
-        assertFalse(PathExistsInDigraph.pathExistsDFS(c, e));
+        thenPathDoesNotExist(c, a);
+        thenPathDoesNotExist(c, b);
+        thenPathExists(c, c);
+        thenPathDoesNotExist(c, d);
+        thenPathDoesNotExist(c, e);
 
-        assertFalse(PathExistsInDigraph.pathExistsDFS(d, a));
-        assertFalse(PathExistsInDigraph.pathExistsDFS(d, b));
-        assertFalse(PathExistsInDigraph.pathExistsDFS(d, c));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(d, d));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(d, e));
+        thenPathDoesNotExist(d, a);
+        thenPathDoesNotExist(d, b);
+        thenPathDoesNotExist(d, c);
+        thenPathExists(d, d);
+        thenPathExists(d, e);
 
-        assertFalse(PathExistsInDigraph.pathExistsDFS(e, a));
-        assertFalse(PathExistsInDigraph.pathExistsDFS(e, b));
-        assertFalse(PathExistsInDigraph.pathExistsDFS(e, c));
-        assertFalse(PathExistsInDigraph.pathExistsDFS(e, d));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(e, e));
+        thenPathDoesNotExist(e, a);
+        thenPathDoesNotExist(e, b);
+        thenPathDoesNotExist(e, c);
+        thenPathDoesNotExist(e, d);
+        thenPathExists(e, e);
     }
 
 
@@ -135,24 +136,34 @@ public class PathExistsInDigraphTest {
         c.addNeighbor(a);
         a.addNeighbor(d);
 
-        assertTrue(PathExistsInDigraph.pathExistsDFS(a, a));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(a, b));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(a, c));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(a, d));
+        thenPathExists(a, a);
+        thenPathExists(a, b);
+        thenPathExists(a, c);
+        thenPathExists(a, d);
 
-        assertTrue(PathExistsInDigraph.pathExistsDFS(b, a));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(b, b));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(b, c));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(b, d));
+        thenPathExists(b, a);
+        thenPathExists(b, b);
+        thenPathExists(b, c);
+        thenPathExists(b, d);
 
-        assertTrue(PathExistsInDigraph.pathExistsDFS(c, a));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(c, b));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(c, c));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(c, d));
+        thenPathExists(c, a);
+        thenPathExists(c, b);
+        thenPathExists(c, c);
+        thenPathExists(c, d);
 
-        assertFalse(PathExistsInDigraph.pathExistsDFS(d, a));
-        assertFalse(PathExistsInDigraph.pathExistsDFS(d, b));
-        assertFalse(PathExistsInDigraph.pathExistsDFS(d, c));
-        assertTrue(PathExistsInDigraph.pathExistsDFS(d, d));
+        thenPathDoesNotExist(d, a);
+        thenPathDoesNotExist(d, b);
+        thenPathDoesNotExist(d, c);
+        thenPathExists(d, d);
+    }
+
+    private <T> void thenPathExists(Graph.Vertex<T> origin, Graph.Vertex<T> destination) {
+        assertTrue(PathExistsInDigraph.pathExistsBFS(origin, destination));
+        assertTrue(PathExistsInDigraph.pathExistsDFS(origin, destination));
+    }
+
+    private <T> void thenPathDoesNotExist(Graph.Vertex<T> origin, Graph.Vertex<T> destination) {
+        assertFalse(PathExistsInDigraph.pathExistsBFS(origin, destination));
+        assertFalse(PathExistsInDigraph.pathExistsDFS(origin, destination));
     }
 }
