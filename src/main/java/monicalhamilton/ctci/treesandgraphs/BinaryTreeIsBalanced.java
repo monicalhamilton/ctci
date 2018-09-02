@@ -8,7 +8,7 @@ package monicalhamilton.ctci.treesandgraphs;
  */
 public class BinaryTreeIsBalanced {
 
-    public static boolean isBalanced(Node binaryTree) {
+    public static boolean isBalanced(BinaryTree binaryTree) {
         if (binaryTree == null) {
             return true;
         }
