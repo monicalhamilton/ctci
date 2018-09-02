@@ -33,6 +33,10 @@ public class BinaryTree {
         return  root.prettyPrint();
     }
 
+    public Node getRoot() {
+        return root;
+    }
+
     public static class Node {
         private int data; // Skipping the generics for simplicity
         private Node left;
@@ -48,6 +52,18 @@ public class BinaryTree {
 
         public void setRight(Node right) {
             this.right = right;
+        }
+
+        public Node getLeft() {
+            return left;
+        }
+
+        public Node getRight() {
+            return right;
+        }
+
+        public int getData() {
+            return data;
         }
 
         /**
