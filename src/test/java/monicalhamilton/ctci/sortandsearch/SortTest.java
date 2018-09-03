@@ -34,8 +34,13 @@ public class SortTest {
     }
 
     @Test
-    public void randomOrder() {
+    public void randomOrderEven() {
         assertSortedIs(new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, new int[]{4, 0, 1, 2, 7, 8, 3, 9, 5, 6});
+    }
+
+    @Test
+    public void randomOrderOdd() {
+        assertSortedIs(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, new int[]{4, 1, 2, 7, 8, 3, 9, 5, 6});
     }
 
     @Test
@@ -47,5 +52,6 @@ public class SortTest {
         assertArrayEquals(expected, Sort.bubbleSort(unsortedInput == null ? null : Arrays.copyOf(unsortedInput, unsortedInput.length)));
         assertArrayEquals(expected, Sort.insertionSort(unsortedInput == null ? null : Arrays.copyOf(unsortedInput, unsortedInput.length)));
         assertArrayEquals(expected, Sort.selectionSort(unsortedInput == null ? null : Arrays.copyOf(unsortedInput, unsortedInput.length)));
+        assertArrayEquals(expected, Sort.mergeSort(unsortedInput == null ? null : Arrays.copyOf(unsortedInput, unsortedInput.length)));
     }
 }

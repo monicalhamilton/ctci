@@ -57,6 +57,58 @@ public class Sort {
         return a;
     }
 
+    public static int[] mergeSort(int[] a) {
+        if (a == null || a.length <= 1) {
+            return a;
+        }
+        mergeSort(a, 0, a.length - 1);
+        return a;
+    }
+
+    private static void mergeSort(int[] a, int leftIndex, int rightIndex) {
+        int midIndex = (rightIndex - leftIndex) / 2 + leftIndex;
+        if (leftIndex < midIndex) {
+            mergeSort(a, leftIndex, midIndex);
+        }
+        if (midIndex + 1 < rightIndex) {
+            mergeSort(a, midIndex + 1, rightIndex);
+        }
+        merge(a, leftIndex, midIndex, midIndex + 1, rightIndex);
+    }
+
+    private static void merge(int[] a, int startLeft, int endLeft, int startRight, int endRight) {
+        int[] copy = Arrays.copyOf(a, a.length);
+        int leftIndex = startLeft; //
+        int rightIndex = startRight; //
+        int i = startLeft; //
+        while (leftIndex <= endLeft || rightIndex <= endRight) {
+            if (leftIndex > endLeft) {
+                a[i] = copy[rightIndex];
+                rightIndex++;
+            } else if (rightIndex > endRight) {
+                a[i] = copy[leftIndex];
+                leftIndex++;
+            } else {
+                if (copy[leftIndex] <= copy[rightIndex]) {
+                    a[i] = copy[leftIndex];
+                    leftIndex++;
+                } else {
+                    a[i] = copy[rightIndex];
+                    rightIndex++;
+                }
+            }
+            i++;
+        }
+    }
+
+    public static int[] heapSort(int[] a) {
+        throw new RuntimeException("Not implemented");
+    }
+
+    public static int[] quickSort(int[] a) {
+        throw new RuntimeException("Not implemented");
+    }
+
     private static void insertAt(int[] a, int indexToTakeFrom, int indexToInsertAt) {
         int valueToTake = a[indexToTakeFrom];
         int indexToShuffleUp = indexToTakeFrom - 1;
