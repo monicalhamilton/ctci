@@ -66,6 +66,24 @@ public class BinaryTree {
             return data;
         }
 
+        public boolean isLeaf() {
+            return left == null && right == null;
+        }
+
+        public boolean isLeftChild(Node parent) {
+            if (parent == null) {
+                return false;
+            }
+            return parent.getLeft() != null && parent.getLeft() == this;
+        }
+
+        public boolean isRightChild(Node parent) {
+            if (parent == null) {
+                return false;
+            }
+            return parent.getRight() != null && parent.getRight() == this;
+        }
+
         /**
          * Returns true if the tree is balanced.
          *
@@ -107,13 +125,19 @@ public class BinaryTree {
             Print leftPrint = left == null ? Print.empty() : left.print();
             Print rightPrint = right == null ? Print.empty() : right.print();
 
+            int thisWidth = String.valueOf(data).length();
             int childWidth = Math.max(leftPrint.width(), rightPrint.width());
-            int totalWidth = childWidth * 2 + 1;
+            int totalWidth = childWidth * 2 + thisWidth;
 
             Print newPrint = new Print(totalWidth);
             int i = Math.max(leftPrint.height(), rightPrint.height()) - 1;
             while (i >= 0) {
-                newPrint.addToTop(leftPrint.get(i, childWidth) + " " + rightPrint.get(i, childWidth));
+                StringBuilder string = new StringBuilder(leftPrint.get(i, childWidth));
+                for (int j = 0; j < thisWidth; j++) {
+                    string.append(" ");
+                }
+                string.append(rightPrint.get(i, childWidth));
+                newPrint.addToTop(string.toString());
                 i--;
             }
             newPrint.addToTop(Print.pad(String.valueOf(data), totalWidth));
@@ -139,8 +163,8 @@ public class BinaryTree {
         public String toString() {
             return String.valueOf(data);
         }
-
         private static class Print {
+
             private final List<String> lines = new LinkedList<>();
             private final int width;
 

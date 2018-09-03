@@ -22,7 +22,7 @@ public class IsBinarySearchTree {
             if (node.getLeft().getData() > node.getData()) {
                 return false;
             }
-            if (parent != null && parent.getRight().equals(node) && node.getLeft().getData() < parent.getData()) {
+            if (parent != null && node.isRightChild(parent) && node.getLeft().getData() < parent.getData()) {
                 return false;
             }
         }
@@ -30,7 +30,7 @@ public class IsBinarySearchTree {
             if (node.getRight().getData() < node.getData()) {
                 return false;
             }
-            if (parent != null && parent.getLeft().equals(node) && node.getRight().getData() > parent.getData()) {
+            if (parent != null && node.isLeftChild(parent) && node.getRight().getData() > parent.getData()) {
                 return false;
             }
         }
