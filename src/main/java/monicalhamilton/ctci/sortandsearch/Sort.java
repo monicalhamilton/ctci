@@ -40,6 +40,16 @@ public class Sort {
         return a;
     }
 
+    private static void insertAt(int[] a, int indexToTakeFrom, int indexToInsertAt) {
+        int valueToTake = a[indexToTakeFrom];
+        int indexToShuffleUp = indexToTakeFrom - 1;
+        while (indexToShuffleUp >= indexToInsertAt) {
+            a[indexToShuffleUp + 1] = a[indexToShuffleUp];
+            indexToShuffleUp--;
+        }
+        a[indexToInsertAt] = valueToTake;
+    }
+
     public static int[] selectionSort(int[] a) {
         if (a == null || a.length <= 1) {
             return a;
@@ -101,10 +111,6 @@ public class Sort {
         }
     }
 
-    public static int[] heapSort(int[] a) {
-        throw new RuntimeException("Not implemented");
-    }
-
     public static int[] quickSort(int[] a) {
         if (a == null || a.length <= 1) {
             return a;
@@ -140,13 +146,15 @@ public class Sort {
         a[index2] = temp;
     }
 
-    private static void insertAt(int[] a, int indexToTakeFrom, int indexToInsertAt) {
-        int valueToTake = a[indexToTakeFrom];
-        int indexToShuffleUp = indexToTakeFrom - 1;
-        while (indexToShuffleUp >= indexToInsertAt) {
-            a[indexToShuffleUp + 1] = a[indexToShuffleUp];
-            indexToShuffleUp--;
-        }
-        a[indexToInsertAt] = valueToTake;
+    public static int[] heapSort(int[] a) {
+        throw new RuntimeException("Not implemented");
+    }
+
+    private static void radixSort(int[] a) {
+        throw new RuntimeException("Not implemented");
+    }
+
+    private static void countingSort(int[] a) {
+        throw new RuntimeException("Not implemented");
     }
 }
