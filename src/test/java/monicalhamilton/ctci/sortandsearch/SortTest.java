@@ -53,5 +53,6 @@ public class SortTest {
         assertArrayEquals(expected, Sort.insertionSort(unsortedInput == null ? null : Arrays.copyOf(unsortedInput, unsortedInput.length)));
         assertArrayEquals(expected, Sort.selectionSort(unsortedInput == null ? null : Arrays.copyOf(unsortedInput, unsortedInput.length)));
         assertArrayEquals(expected, Sort.mergeSort(unsortedInput == null ? null : Arrays.copyOf(unsortedInput, unsortedInput.length)));
+        assertArrayEquals(expected, Sort.quickSort(unsortedInput == null ? null : Arrays.copyOf(unsortedInput, unsortedInput.length)));
     }
 }

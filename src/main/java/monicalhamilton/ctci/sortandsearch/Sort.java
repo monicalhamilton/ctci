@@ -106,7 +106,38 @@ public class Sort {
     }
 
     public static int[] quickSort(int[] a) {
-        throw new RuntimeException("Not implemented");
+        if (a == null || a.length <= 1) {
+            return a;
+        }
+        quickSort(a, 0, a.length - 1);
+        return a;
+    }
+
+    private static void quickSort(int[] a, int leftIndex, int rightIndex) {
+        if (leftIndex < rightIndex) {
+            int partitionIndex = partition(a, leftIndex, rightIndex);
+            quickSort(a, leftIndex, partitionIndex - 1);
+            quickSort(a, partitionIndex + 1, rightIndex);
+        }
+    }
+
+    private static int partition(int[] a, int leftIndex, int rightIndex) {
+        int partitionValue = a[rightIndex];
+        int partitionIndex = leftIndex;
+        for (int i = leftIndex; i < rightIndex; i++) {
+            if (a[i] <= partitionValue) {
+                swap(a, i, partitionIndex);
+                partitionIndex++;
+            }
+        }
+        swap(a, partitionIndex, rightIndex);
+        return partitionIndex;
+    }
+
+    private static void swap(int[] a, int index1, int index2) {
+        int temp = a[index1];
+        a[index1] = a[index2];
+        a[index2] = temp;
     }
 
     private static void insertAt(int[] a, int indexToTakeFrom, int indexToInsertAt) {
