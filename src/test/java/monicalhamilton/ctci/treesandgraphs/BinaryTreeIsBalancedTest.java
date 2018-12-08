@@ -10,12 +10,14 @@ public class BinaryTreeIsBalancedTest {
     @Test
     public void whenTreeIsNull_isBalanced() {
         assertTrue(BinaryTreeIsBalanced.isBalanced(null));
+        assertTrue(BinaryTreeIsBalancedNonOO.isBalanced(null));
     }
 
     @Test
     public void whenTreeIsSingleton_isBalanced() {
         BinaryTree n1 = new BinaryTree(new BinaryTree.Node(1));
         assertTrue(BinaryTreeIsBalanced.isBalanced(n1));
+        assertTrue(BinaryTreeIsBalancedNonOO.isBalanced(n1.getRoot()));
     }
 
     /**
@@ -33,6 +35,7 @@ public class BinaryTreeIsBalancedTest {
         n1.setLeft(n2);
         n1.setRight(n3);
         assertTrue(BinaryTreeIsBalanced.isBalanced(new BinaryTree(n1)));
+        assertTrue(BinaryTreeIsBalancedNonOO.isBalanced(n1));
     }
 
     /**
@@ -48,6 +51,7 @@ public class BinaryTreeIsBalancedTest {
         BinaryTree.Node n2 = new BinaryTree.Node(2);
         n1.setLeft(n2);
         assertTrue(BinaryTreeIsBalanced.isBalanced(new BinaryTree(n1)));
+        assertTrue(BinaryTreeIsBalancedNonOO.isBalanced(n1));
     }
 
     /**
@@ -71,6 +75,7 @@ public class BinaryTreeIsBalancedTest {
         n1.setRight(n4);
         n4.setRight(n5);
         assertTrue(BinaryTreeIsBalanced.isBalanced(new BinaryTree(n1)));
+        assertTrue(BinaryTreeIsBalancedNonOO.isBalanced(n1));
     }
 
     /**
@@ -98,6 +103,7 @@ public class BinaryTreeIsBalancedTest {
         n1.setRight(n5);
         n5.setRight(n6);
         assertFalse(BinaryTreeIsBalanced.isBalanced(new BinaryTree(n1)));
+        assertFalse(BinaryTreeIsBalancedNonOO.isBalanced(n1));
     }
 
     /**
@@ -133,6 +139,7 @@ public class BinaryTreeIsBalancedTest {
         n1.setRight(n8);
 
         assertFalse(BinaryTreeIsBalanced.isBalanced(new BinaryTree(n1)));
+        assertFalse(BinaryTreeIsBalancedNonOO.isBalanced(n1));
     }
 
     /**
@@ -171,5 +178,6 @@ public class BinaryTreeIsBalancedTest {
         n1.setRight(n8);
 
         assertTrue(BinaryTreeIsBalanced.isBalanced(new BinaryTree(n1)));
+        assertTrue(BinaryTreeIsBalancedNonOO.isBalanced(n1));
     }
 }
